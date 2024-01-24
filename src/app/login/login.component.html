@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>Login CondoMaster </h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" placeholder="Enter your username" required>
+        
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" placeholder="Enter your password" required>
+        
+        <ng-container>
+           
+        </ng-container>
+        
+        <input type="submit" value="Login" [disabled]="loginForm.invalid">
+    </form>
+  </div>
