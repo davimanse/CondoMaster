@@ -7,11 +7,15 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
   providedIn: 'root'
 })
 export class AlertService {
-  private alertSubject: Subject<AlertModel> = new Subject<AlertModel>();
-  public alert$:Observable<AlertModel> = this.alertSubject.asObservable();
+  private alertSubject: Subject<AlertModel | null> = new Subject<AlertModel |null>();
+  public alert$:Observable<AlertModel | null> = this.alertSubject.asObservable();
 
   setAlert(alert: AlertModel) {
     this.alertSubject.next(alert);
+  }
+
+  clearAlert() {
+    this.alertSubject.next(null);
   }
   constructor() { }
 }

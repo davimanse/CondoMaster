@@ -7,7 +7,8 @@
         <label for="password">Password</label>
         <input type="password" formControlName="password" placeholder="Enter your password" required>
         
-        <ng-container>
+        <ng-container *ngIn="alert$|async as alert">
+            <span [class]="alert.alertClass">{{alert.message}}</span>
            
         </ng-container>
         
