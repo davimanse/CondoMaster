@@ -45,6 +45,14 @@ export class LoginComponent implements OnInit{
     }
    
   }
+
+async logout  () {
+  this.authService.logout();
+  this.router.navigate(['/login']);
+}
+
+
+  
   
 
   get f() { return this.loginForm.controls; }
