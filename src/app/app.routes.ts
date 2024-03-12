@@ -5,16 +5,8 @@ import { AuthGuard } from './servizi/auth-guard.guard';
 
 
 export const routes: Routes = [
-<<<<<<< Updated upstream
     {path: '', redirectTo: 'home', pathMatch: 'full'},
-    {path: 'login', component: LoginComponent},
+    {path: 'login', component: LoginComponent},  
+    {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
 
-    
-
-
-=======
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
->>>>>>> Stashed changes
 ];

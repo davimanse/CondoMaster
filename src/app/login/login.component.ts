@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit{
       const loginResult:boolean = await this.authService.login(username, password);
     
         this.alertService.setAlert({alertClass: 'success', message: 'Login Successful'});
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/home']);
 
   
     }catch(e){
