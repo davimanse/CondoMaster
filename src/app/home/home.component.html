@@ -5,6 +5,14 @@
     <body>
         <h1>Home</h1>
         <p>home works!</p>
+        <div *ngIf="data">
+            <h2>Risultati</h2>
+            <div *ngFor="let record of data.records">
+              <p>{{ record.Nome }}</p>
+              <p>{{ record.Indirizzo }}</p>
+              <p>{{ record.nAppartamenti }}</p>
+            </div>
+          </div>
         <button (click)="logout()">logout</button>
     </body>
 </html>

@@ -15,7 +15,7 @@ export class AuthService {
 
     async login(username: string, password: string) {
       
-      const authData = await this.pb.collection('users').authWithPassword(
+      const authData = await this.pb.collection('Admin').authWithPassword(
 
         username,
         password,
