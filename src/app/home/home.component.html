@@ -8,9 +8,9 @@
         <div *ngIf="data">
             <h2>Risultati</h2>
             <div *ngFor="let record of data.records">
-              <p>{{ record.Nome }}</p>
-              <p>{{ record.Indirizzo }}</p>
-              <p>{{ record.nAppartamenti }}</p>
+              <p>{{ record.nome }}</p>
+              <p>{{ record.indirizzo }}</p>
+              <p>{{ record.nappartamenti }}</p>
             </div>
           </div>
         <button (click)="logout()">logout</button>
