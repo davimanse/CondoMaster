@@ -6,15 +6,16 @@
         <h1>Home</h1>
         <p>home works!</p>
         <div *ngIf="data">
-            <h2>Risultati</h2>
-            <div *ngFor="let record of data.records">
-              <p>{{ record.nome }}</p>
-              <p>{{ record.indirizzo }}</p>
-              <p>{{ record.nappartamenti }}</p>
-            </div>
+          <h1>Dati del Condominio</h1>
+          <div *ngFor="let item of data | keyvalue">
+            <ng-container *ngIf="item.key === 'nAppartamenti' || item.key === 'Nome' || item.key === 'Indirizzo'">
+            <p><strong>ID:</strong> {{item.key}}</p>
+            <p><strong>Value:</strong> {{item.value}}</p>
+          </ng-container>
           </div>
+        </div>
+        
+         
         <button (click)="logout()">logout</button>
     </body>
 </html>
-
-
