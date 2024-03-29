@@ -5,17 +5,11 @@
     <body>
         <h1>Home</h1>
         <p>home works!</p>
-        <div *ngIf="data">
-          <h1>Dati del Condominio</h1>
-          <div *ngFor="let item of data | keyvalue">
-            <ng-container *ngIf="item.key === 'nAppartamenti' || item.key === 'Nome' || item.key === 'Indirizzo'">
-            <p><strong>ID:</strong> {{item.key}}</p>
-            <p><strong>Value:</strong> {{item.value}}</p>
-          </ng-container>
-          </div>
-        </div>
-        
+        {{condomini|json}}
+
          
         <button (click)="logout()">logout</button>
     </body>
 </html>
+
+
