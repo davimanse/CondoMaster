@@ -1,15 +1,21 @@
-<html>
-    <head>
-        <title>Home</title>
-    </head>
-    <body>
-        <h1>Home</h1>
-        <p>home works!</p>
-        {{condomini|json}}
+<!-- home.component.html -->
 
-         
-        <button (click)="logout()">logout</button>
-    </body>
-</html>
-
-
+<table>
+  <thead>
+    <tr>
+      <th>Nome Condominio</th>
+      <th>Indirizzo</th>
+      <th>Numero Appartamenti</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let condominio of condomini">
+      <td>{{ condominio.Nome }}</td>
+      <td>{{ condominio.Indirizzo }}</td>
+      <td>{{ condominio.nAppartamenti }}</td>
+      
+    </tr>
+  </tbody>
+</table>
+<button (click)="logout()">logout</button>

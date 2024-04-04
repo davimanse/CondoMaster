@@ -1,34 +1,43 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
-import { OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { PocketBaseService } from '../servizi/fetch-records.service';
 import { CommonModule } from '@angular/common';
-import { inject } from '@angular/core';
+import { CondoListModel, CondoModel } from '../models/condo-model';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
+import { BrowserModule } from '@angular/platform-browser'; // if _HomeComponent is in the root module
+
+import PocketBase from 'PocketBase';
+import { AppModule } from '../app.module';
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  condoService = inject(PocketBaseService);
-  condomini !: any;
-  constructor(private authService: AuthService, private router: Router, private pbservice:PocketBaseService) { }
   
-  
-  private async loadCondomini() {
-    try{
-      this.condomini = await this.condoService.fetchCondominio();
-    }catch(e){
-      console.log(e);
-    }
+  private authService : AuthService = inject(AuthService);
+  private router: Router = inject(Router);
+  private CondominioService = inject(PocketBaseService);
 
+  
+
+  constructor(private pocketBaseService: PocketBaseService) { }
+  
+  condomini!: CondoModel[];// Inizializza un array vuoto per i dati dei condomini
+  private async LoadCondo() {
+    try {
+      this.condomini = await this.CondominioService.getCondomini();
+    
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
- ngOnInit():void{
-   this.loadCondomini();
+
+
+  ngOnInit():void {
+    this.LoadCondo();  
   }
 
 
