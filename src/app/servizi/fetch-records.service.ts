@@ -22,5 +22,9 @@ export class PocketBaseService {
     const response: CondoModel = await pb.collection('Condominio').create(Condo);
     return response;
   }
+  async deleteCondo(id:string){
+    const pb = new PocketBase('http://127.0.0.1:8090');
+    await pb.collection('Condominio').delete(id);
+  }
 
 }

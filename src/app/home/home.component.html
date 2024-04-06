@@ -7,6 +7,7 @@
       <th>Indirizzo</th>
       <th>Numero Appartamenti</th>
       <th></th>
+      <th></th>
     
     </tr>
   </thead>
@@ -15,6 +16,8 @@
       <td>{{ condominio.Nome }}</td>
       <td>{{ condominio.Indirizzo }}</td>
       <td>{{ condominio.nAppartamenti }}</td>
+      <td> <button (click)="deleteCondo(condominio.id)">Elimina Appartamento</button></td>
+      
 
       
     </tr>

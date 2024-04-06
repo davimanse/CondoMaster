@@ -29,7 +29,8 @@ export class HomeComponent implements OnInit {
     try {
 
       this.condomini = await this.CondominioService.getCondomini();
-      this.condomini = this.condomini.filter(condo => condo.IDAdmin === this.adminId);      
+      this.condomini = this.condomini.filter(condo => condo.IDAdmin === this.adminId);    
+        
     }
     catch (error) {
       console.log(error);
@@ -39,10 +40,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit():void {
     this.LoadCondo();  
-    this.adminId=this.authService.getAdminId()
+    this.adminId=this.authService.getAdminId();
   }
 
-
+  async deleteCondo(id:string) {
+    this.pocketBaseService.deleteCondo(id);
+    this.condomini = this.condomini.filter(condo => condo.id !== id);
+  }
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
