@@ -9,7 +9,7 @@ import { UserModel } from './models/user-model';
 export class AuthService {
  
   private pb: PocketBase; // Dichiarare pb come proprietà della classe
-
+  private adminId: string | null = null;
   private userSubject: BehaviorSubject<UserModel | null> = new BehaviorSubject<UserModel | null>(null);
   user$ = this.userSubject.asObservable();
 
@@ -20,10 +20,14 @@ export class AuthService {
         username,
         password,
       );
+        
       this.userSubject.next({ isValid: this.pb.authStore.isValid, username: this.pb.authStore.model?.['email'] });
       console.log(authData) ;
+      this.adminId=authData?.record?.id;
+      console.log(authData?.record?.id);
       console.log(this.pb.authStore.isValid);
       console.log(this.pb.authStore.token);
+      
       return true;
     }
 
@@ -31,13 +35,16 @@ export class AuthService {
         const pb = new PocketBase('http://127.0.0.1:8090');
         pb.authStore.clear();
       }      
-
+      
       updateUserSubjet() {
         const pb = new PocketBase('http://127.0.0.1:8090');
         this.userSubject.next({ isValid: pb.authStore.isValid, username: pb.authStore.model?.['email'] });
       }
 
-
+      getAdminId(): string | null {
+        return this.adminId;
+      }
+      
       isLoggedIn(): boolean {
         return this.pb.authStore.isValid;
       }

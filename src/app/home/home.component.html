@@ -6,6 +6,7 @@
       <th>Nome Condominio</th>
       <th>Indirizzo</th>
       <th>Numero Appartamenti</th>
+      <th></th>
     
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <td>{{ condominio.Nome }}</td>
       <td>{{ condominio.Indirizzo }}</td>
       <td>{{ condominio.nAppartamenti }}</td>
+      <td><button (click)="removeCondo()"> Elimina</button></td>
       
     </tr>
   </tbody>

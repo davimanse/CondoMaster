@@ -19,16 +19,17 @@ export class HomeComponent implements OnInit {
   private authService : AuthService = inject(AuthService);
   private router: Router = inject(Router);
   private CondominioService = inject(PocketBaseService);
-
+  adminId: string | null = null;
   
 
   constructor(private pocketBaseService: PocketBaseService) { }
   
-  condomini!: CondoModel[];// Inizializza un array vuoto per i dati dei condomini
+  condomini!: CondoModel[];
   private async LoadCondo() {
     try {
+
       this.condomini = await this.CondominioService.getCondomini();
-    
+      this.condomini = this.condomini.filter(condo => condo.IDAdmin === this.adminId);      
     }
     catch (error) {
       console.log(error);
@@ -38,6 +39,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit():void {
     this.LoadCondo();  
+    this.adminId=this.authService.getAdminId()
   }
 
 
