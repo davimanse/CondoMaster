@@ -1,0 +1,50 @@
+/* Aggiungi uno spazio vuoto sopra e sotto la tabella */
+table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Stile dell'header della tabella */
+  thead {
+    background-color: #007bff; /* colore di sfondo blu */
+    color: white; /* testo bianco */
+  }
+  
+  /* Stile del testo nell'header */
+  th {
+    text-align: center; /* centrato */
+  }
+  
+  /* Stile delle righe della tabella */
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* sfondo grigio chiaro per le righe pari */
+  }
+  
+  /* Stile dei pulsanti */
+  .btn {
+    margin-top: 10px; /* spazio superiore */
+    margin-right: 10px; /* spazio destro */
+  }
+  
+  /* Stile del pulsante di logout */
+  .btn-primary {
+    background-color: #28a745; /* colore di sfondo verde */
+    border-color: #28a745; /* colore del bordo verde */
+  }
+  
+  /* Stile del pulsante di eliminazione */
+  .btn-danger {
+    background-color: #dc3545; /* colore di sfondo rosso */
+    border-color: #dc3545; /* colore del bordo rosso */
+  }
+  
+  /* Stile del testo del pulsante */
+  .btn-primary, .btn-danger {
+    color: white; /* testo bianco */
+  }
+  
+  /* Effetto hover sui pulsanti */
+  .btn:hover {
+    opacity: 0.8; /* leggermente trasparente quando il mouse ci passa sopra */
+  }
+  

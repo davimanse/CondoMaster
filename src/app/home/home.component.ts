@@ -4,9 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CondoListModel, CondoModel } from '../models/condo-model';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-
 import { BrowserModule } from '@angular/platform-browser'; // if _HomeComponent is in the root module
-
 import PocketBase from 'PocketBase';
 import { AppModule } from '../app.module';
 @Component({
@@ -25,12 +23,27 @@ export class HomeComponent implements OnInit {
   constructor(private pocketBaseService: PocketBaseService) { }
   
   condomini!: CondoModel[];
+  
+  nuovoCondominio = {
+    Nome: '',
+    Indirizzo: '',
+    nAppartamenti: 0,
+    IDAdmin: this.adminId,
+  };
+  showModal = false;
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+   /* this.resetForm(); */
+  }
+
   private async LoadCondo() {
     try {
-
       this.condomini = await this.CondominioService.getCondomini();
       this.condomini = this.condomini.filter(condo => condo.IDAdmin === this.adminId);    
-        
     }
     catch (error) {
       console.log(error);
@@ -46,6 +59,11 @@ export class HomeComponent implements OnInit {
   async deleteCondo(id:string) {
     this.pocketBaseService.deleteCondo(id);
     this.condomini = this.condomini.filter(condo => condo.id !== id);
+  }
+  async aggiungiCondominio() {
+    this.pocketBaseService.addCondo(this.nuovoCondominio); 
+    this.condomini = await this.pocketBaseService.getCondomini();
+    this.closeModal();
   }
   logout() {
     this.authService.logout();

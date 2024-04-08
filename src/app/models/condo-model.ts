@@ -10,10 +10,6 @@ export interface CondoListModel {
 
 export interface CondoModel {
     id:             string;
-    collectionId:   string;
-    collectionName: string;
-    created:        string;
-    updated:        string;
     Nome:           string;
     Indirizzo:      string;
     nAppartamenti:  number;
