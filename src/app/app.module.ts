@@ -6,12 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from "./menu/menu.component";
 import { HomeComponent } from "./home/home.component";
 import { MatSidenavContent } from '@angular/material/sidenav';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
 
 @NgModule({
-    declarations: [HomeComponent],
+    declarations: [HomeComponent,NavbarComponent],
     providers: [],
     bootstrap: [],
     imports: [
@@ -21,7 +22,7 @@ import { MatSidenavContent } from '@angular/material/sidenav';
         ReactiveFormsModule,
         FormsModule,
         MenuComponent,
-        MatSidenavContent
+        MatSidenavContent,
     ]
 })
 export class AppModule { }

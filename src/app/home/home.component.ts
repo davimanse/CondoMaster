@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser'; // if _HomeComponent is in the root module
 import PocketBase from 'PocketBase';
 import { AppModule } from '../app.module';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -37,6 +40,7 @@ export class HomeComponent implements OnInit {
 
   closeModal() {
     this.showModal = false;
+    console.log(this.nuovoCondominio)
    /* this.resetForm(); */
   }
 
@@ -61,7 +65,7 @@ export class HomeComponent implements OnInit {
     this.condomini = this.condomini.filter(condo => condo.id !== id);
   }
   async aggiungiCondominio() {
-     /* this.pocketBaseService.addCondo(this.nuovoCondominio); */
+     this.pocketBaseService.addCondo(this.nuovoCondominio);
     this.condomini = await this.pocketBaseService.getCondomini();
     this.closeModal();
   }

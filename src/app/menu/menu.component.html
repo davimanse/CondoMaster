@@ -1,28 +1,25 @@
-
-    <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-      <mat-toolbar color="primary" class="example-toolbar">
-        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-        <h1 class="example-app-name">Responsive App</h1>
-      </mat-toolbar>
-  
-      <mat-sidenav-container class="example-sidenav-container"
-                            [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                    [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-          <mat-nav-list>
-            @for (nav of fillerNav; track nav) {
-              <a mat-list-item routerLink=".">{{nav}}</a>
-            }
-          </mat-nav-list>
-        </mat-sidenav>
-  
-        <mat-sidenav-content>
-            @for (content of fillerContent; track content) {
-                <p>{{content}}</p>
-              }
-
-        </mat-sidenav-content>
-      </mat-sidenav-container>
+<div class="container">
+  <h1>Benvenuti su CondomAster/h1>
+  <div class="row">
+    <div class="col-md-6">
+      <img src="https://www.pascal.edu.it/tour-fotografico/image?view=image&format=raw&type=orig&id=246" alt="Foto della scuola" class="img-fluid">
     </div>
+    <div class="col-md-6">
+      <h3>Dati scuola</h3>
+      <p>Nome: IIS Blaise Pascal</p>
+      <p>Indirizzo: Via Makalle</p>
+      <p>Città: Reggio Emilia</p>
+      <p>Telefono: 	0522512351</p>
+      <p>Email: infoblaisepascal.edu</p>
+      <p>Sito web: <a href="https://www.pascal.edu.it/">www.blaisepascal.edu</a></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Informazioni</h3>
+      <p>Benvenuti sul sito web dell'IIS Blaise Pascal di Reggio Emilia. </p>
+      <p>Questo sito è il gestionale di tutte le classi e di tutti gli studenti. Qui potrai trovare informazioni sulle nostre classi egli alunni</p>
 
-  
+    </div>
+  </div>
+

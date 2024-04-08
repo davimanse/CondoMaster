@@ -1,31 +1,76 @@
-.example-container {
+$primary-color: #ff5a5f;
+$secondary-color: #333;
+$accent-color: #ffc107;
+
+.container {
+  background-color: #f8f8f8;
+  padding: 40px;
+
+  h1 {
+    color: $secondary-color;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .row {
     display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .col-md-6 {
+      width: 45%;
+
+      img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      &:last-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h3 {
+          color: $primary-color;
+          font-size: 28px;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+        }
+
+        p {
+          color: $secondary-color;
+          font-size: 18px;
+          margin-bottom: 10px;
+          line-height: 1.4;
+        }
+      }
+    }
   }
-  
-  .example-is-mobile .example-toolbar {
-    position: fixed;
-    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-    z-index: 2;
+
+  .col-md-12 {
+    h3 {
+      color: $accent-color;
+      font-size: 32px;
+      margin-bottom: 30px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    p {
+      color: $secondary-color;
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
   }
-  
-  h1.example-app-name {
-    margin-left: 8px;
-  }
-  
-  .example-sidenav-container {
-    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
-    flex: 1;
-  }
-  
-  .example-is-mobile .example-sidenav-container {
-    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-       `<body>` to be our scrolling element for mobile layouts. */
-    flex: 1 0 auto;
-  }
+}

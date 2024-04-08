@@ -7,6 +7,8 @@ import { CondoListModel, CondoModel } from '../models/condo-model';
 })
 export class PocketBaseService {
 
+  constructor() { }
+
   async getCondomini(): Promise<CondoModel[]> {
     const pb = new PocketBase('http://127.0.0.1:8090');
     const records:CondoModel[] = await pb.collection('Condominio').getFullList({
@@ -15,13 +17,13 @@ export class PocketBaseService {
     console.log("sopra")
     return records;
   }
-  constructor() {}
-  async addCondo(Condo:CondoModel) {
-
+  async addCondo(data: { Nome: string, Indirizzo: string, nAppartamenti: number, IDAdmin: string | null }) {
     const pb = new PocketBase('http://127.0.0.1:8090');
-    const response: CondoModel = await pb.collection('Condominio').create(Condo);
+    const response: CondoModel = await pb.collection('Condominio').create(data);
     return response;
   }
+  
+  
   async deleteCondo(id:string){
     const pb = new PocketBase('http://127.0.0.1:8090');
     await pb.collection('Condominio').delete(id);
