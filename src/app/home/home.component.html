@@ -1,57 +1,58 @@
 <!-- home.component.html -->
 
  
-<table class="table table-striped">
-  <thead>
-    <tr><app-menu></app-menu>
-      <th>Nome Condominio</th>
-      <th>Indirizzo</th>
-      <th>Numero Appartamenti</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let condominio of condomini">
-      <td>{{ condominio.Nome }}</td>
-      <td>{{ condominio.Indirizzo }}</td>
-      <td>{{ condominio.nAppartamenti }}</td>
-      <td><button class="btn btn-danger" (click)="deleteCondo(condominio.id)">Elimina Appartamento</button></td>
-    </tr>
-  </tbody>
-</table>
-<button class="btn btn-primary" (click)="openModal()">Aggiungi Condominio</button>
-
-<!-- Modal per l'aggiunta di un condominio -->
-<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showModal}" style="display: block;" *ngIf="showModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Aggiungi Condominio</h5>
-        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" class="form-control" id="nome" [(ngModel)]="nuovoCondominio.Nome">
-          </div>
-          <div class="form-group">
-            <label for="indirizzo">Indirizzo:</label>
-            <input type="text" class="form-control" id="indirizzo" [(ngModel)]="nuovoCondominio.Indirizzo">
-          </div>
-          <div class="form-group">
-            <label for="nAppartamenti">Numero Appartamenti:</label>
-            <input type="number" class="form-control" id="nAppartamenti" [(ngModel)]="nuovoCondominio.nAppartamenti">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="aggiungiCondominio()">Salva</button>
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">Annulla</button>
+  <table class="table table-striped">
+    <thead>
+      <tr><app-menu></app-menu>
+        <th>Nome Condominio</th>
+        <th>Indirizzo</th>
+        <th>Numero Appartamenti</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let condominio of condomini">
+        <td>{{ condominio.Nome }}</td>
+        <td>{{ condominio.Indirizzo }}</td>
+        <td>{{ condominio.nAppartamenti }}</td>
+        <td><button class="btn btn-danger" (click)="deleteCondo(condominio.id)">Elimina Appartamento</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="openModal()">Aggiungi Condominio</button>
+  
+  <!-- Modal per l'aggiunta di un condominio -->
+  <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showModal}" style="display: block;" *ngIf="showModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Aggiungi Condominio</h5>
+          <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input type="text" class="form-control" id="nome" [(ngModel)]="nuovoCondominio.Nome">
+            </div>
+            <div class="form-group">
+              <label for="indirizzo">Indirizzo:</label>
+              <input type="text" class="form-control" id="indirizzo" [(ngModel)]="nuovoCondominio.Indirizzo">
+            </div>
+            <div class="form-group">
+              <label for="nAppartamenti">Numero Appartamenti:</label>
+              <input type="number" class="form-control" id="nAppartamenti" [(ngModel)]="nuovoCondominio.nAppartamenti">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="aggiungiCondominio()">Salva</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Annulla</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  
