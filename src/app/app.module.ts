@@ -6,22 +6,22 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MenuComponent } from "./menu/menu.component";
 
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule
-
-  ],
-  providers: [],
-  bootstrap: []
+    declarations: [
+        HomeComponent,
+    ],
+    providers: [],
+    bootstrap: [],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MenuComponent
+    ]
 })
 export class AppModule { }

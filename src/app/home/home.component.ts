@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
     this.condomini = this.condomini.filter(condo => condo.id !== id);
   }
   async aggiungiCondominio() {
-    this.pocketBaseService.addCondo(this.nuovoCondominio); 
+     /* this.pocketBaseService.addCondo(this.nuovoCondominio); */
     this.condomini = await this.pocketBaseService.getCondomini();
     this.closeModal();
   }
