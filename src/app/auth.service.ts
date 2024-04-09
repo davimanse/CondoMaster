@@ -9,7 +9,7 @@ import { UserModel } from './models/user-model';
 export class AuthService {
  
   private pb: PocketBase; // Dichiarare pb come proprietà della classe
-  private adminId: string | null = null;
+  private adminId!: string;
   private userSubject: BehaviorSubject<UserModel | null> = new BehaviorSubject<UserModel | null>(null);
   user$ = this.userSubject.asObservable();
 
@@ -41,7 +41,7 @@ export class AuthService {
         this.userSubject.next({ isValid: pb.authStore.isValid, username: pb.authStore.model?.['email'] });
       }
 
-      getAdminId(): string | null {
+      getAdminId(): string {
         return this.adminId;
       }
       

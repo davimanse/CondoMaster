@@ -20,10 +20,10 @@ export class HomeComponent implements OnInit {
   private authService : AuthService = inject(AuthService);
   private router: Router = inject(Router);
   private CondominioService = inject(PocketBaseService);
-  adminId: string | null = null;
+  adminId: string;
   
 
-  constructor(private pocketBaseService: PocketBaseService) { }
+  constructor(private pocketBaseService: PocketBaseService) { this.adminId=this.authService.getAdminId()}
   
   condomini!: CondoModel[];
   
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     Nome: '',
     Indirizzo: '',
     nAppartamenti: 0,
-    IDAdmin: this.adminId,
+    IDAdmin: '',
   };
   showModal = false;
   openModal() {
@@ -65,6 +65,8 @@ export class HomeComponent implements OnInit {
     this.condomini = this.condomini.filter(condo => condo.id !== id);
   }
   async aggiungiCondominio() {
+    this.nuovoCondominio.IDAdmin = this.adminId;
+    console.log(this.nuovoCondominio);
      this.pocketBaseService.addCondo(this.nuovoCondominio);
     this.condomini = await this.pocketBaseService.getCondomini();
     this.closeModal();
