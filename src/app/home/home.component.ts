@@ -1,7 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { PocketBaseService } from '../servizi/fetch-records.service';
-import { CommonModule } from '@angular/common';
-import { CondoListModel, CondoModel } from '../models/condo-model';
+import {CondoModel } from '../models/condo-model';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser'; // if _HomeComponent is in the root module
@@ -13,7 +12,8 @@ import { NgModule } from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+
 })
 export class HomeComponent implements OnInit {
   
