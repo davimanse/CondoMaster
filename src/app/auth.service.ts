@@ -13,44 +13,45 @@ export class AuthService {
   private userSubject: BehaviorSubject<UserModel | null> = new BehaviorSubject<UserModel | null>(null);
   user$ = this.userSubject.asObservable();
 
-    async login(username: string, password: string) {
-      
-      const authData = await this.pb.collection('Admin').authWithPassword(
+  async login(username: string, password: string) {
+    let authData: any;
 
-        username,
-        password,
-      );
-        
-      this.userSubject.next({ isValid: this.pb.authStore.isValid, username: this.pb.authStore.model?.['email'] });
-      console.log(authData) ;
-      this.adminId=authData?.record?.id;
-      console.log(authData?.record?.id);
-      console.log(this.pb.authStore.isValid);
-      console.log(this.pb.authStore.token);
-      
-      return true;
+    // Effettua l'autenticazione sia come amministratore che come utente
+    try {
+      authData = await this.pb.collection('Admin').authWithPassword(username, password);
+      this.adminId = authData?.record?.id;
+    } catch (error) {
+      // Se l'autenticazione come amministratore fallisce, prova come utente
+      authData = await this.pb.collection('Utenti').authWithPassword(username, password);
     }
 
-      async logout() {
-        const pb = new PocketBase('http://127.0.0.1:8090');
-        pb.authStore.clear();
-      }      
-      
-      updateUserSubjet() {
-        const pb = new PocketBase('http://127.0.0.1:8090');
-        this.userSubject.next({ isValid: pb.authStore.isValid, username: pb.authStore.model?.['email'] });
-      }
+    // Aggiorna lo stato dell'utente autenticato
+    this.userSubject.next({ isValid: this.pb.authStore.isValid, username: this.pb.authStore.model?.['email'] });
 
-      getAdminId(): string {
-        return this.adminId;
-      }
-      
-      isLoggedIn(): boolean {
-        return this.pb.authStore.isValid;
-      }
-      
-    constructor() { 
-      this.pb = new PocketBase('http://127.0.0.1:8090'); // Inizializzare pb nel costruttore
+    console.log(authData);
+    console.log(this.pb.authStore.isValid);
+    console.log(this.pb.authStore.token);
 
-    } 
+    return true;
+  }
+
+  async logout() {
+    this.pb.authStore.clear();
+  }      
+      
+  updateUserSubject() {
+    this.userSubject.next({ isValid: this.pb.authStore.isValid, username: this.pb.authStore.model?.['email'] });
+  }
+
+  getAdminId(): string {
+    return this.adminId;
+  }
+  
+  isLoggedIn(): boolean {
+    return this.pb.authStore.isValid;
+  }
+
+  constructor() { 
+    this.pb = new PocketBase('http://127.0.0.1:8090'); // Inizializzare pb nel costruttore
+  } 
 }
