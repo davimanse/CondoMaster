@@ -34,9 +34,18 @@ export class LoginComponent implements OnInit{
       const username = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
       const loginResult:boolean = await this.authService.login(username, password);
-    
-        this.alertService.setAlert({alertClass: 'success', message: 'Login Successful'});
-        this.router.navigate(['/home']);
+      if(loginResult)
+      { this.router.navigate(['/home']);}
+      else{
+        const username = this.loginForm.get('username')?.value;
+        const password = this.loginForm.get('password')?.value;
+        const loginResult:boolean = await this.authService.loginUsers(username, password);
+        if(loginResult)
+        { 
+         // this.router.navigate(['/indexUtente']);
+         console.log("login utente")
+        }
+      }
 
   
     }catch(e){
@@ -46,14 +55,10 @@ export class LoginComponent implements OnInit{
    
   }
 
-async logout  () {
-  this.authService.logout();
-  this.router.navigate(['/login']);
-}
-
 
   
-  
+  register() {
+  }
 
   get f() { return this.loginForm.controls; }
   ngOnInit(): void {

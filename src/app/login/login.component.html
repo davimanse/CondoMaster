@@ -5,7 +5,7 @@
     
     <div class="container">
         
-        <h2>Login CondoMaster </h2>
+        <h2><b>Login CondoMaster </b></h2>
         <form [formGroup]="loginForm" (ngSubmit)="login()">
        
             <input type="text" class="email" formControlName="username" placeholder="USERNAME" required>
@@ -18,7 +18,7 @@
             </ng-container>
     
             <input class="sig" type="submit" value="Login" [disabled]="loginForm.invalid">
-    
+
         </form>
         <img src="../../assets/logo.jpg" class="logo">
     </div>
