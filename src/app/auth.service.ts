@@ -48,6 +48,7 @@ export class AuthService {
       isLoggedIn(): boolean {
         return this.pb.authStore.isValid;
       }
+      
     constructor() { 
       this.pb = new PocketBase('http://127.0.0.1:8090'); // Inizializzare pb nel costruttore
 

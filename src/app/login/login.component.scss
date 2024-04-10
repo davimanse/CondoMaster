@@ -8,20 +8,24 @@
 
 body{
   font-family: 'Open Sans', sans-serif;
-  background:#e2e2e2;
+  background: #e2e2e2;
+  display: flex;
+  
 }
 
 svg{
   position:fixed;
   top:10px;
-  left:180px;
+  left:-170px;
+}
+
+#colors{
+  background-color:#faecd9;
 }
 
 .container{
   position:relative;
-  top:200px;
-  left:35%;
-  display:block;
+  top:225px;
   margin-bottom:80px;
   width:500px;
   height:360px;
@@ -29,12 +33,12 @@ svg{
   border-radius:5px;
   overflow:hidden;
   z-index:1;
+  left: 190px;
 }
 
 h2{
   padding:40px;
   font-weight:lighter;
-  text-transform:uppercase;
   color:#414141;
 }
 
@@ -66,8 +70,6 @@ input{
   }
 }
 
-
-
 .email,
 .pwd{
   position:relative;
@@ -82,8 +84,6 @@ input{
   transition:.5s;
 }
 
-
-
 .link{
   text-decoration:none;
   display:inline-block;
@@ -95,12 +95,9 @@ input{
   transition:.5s;
 }
 
-
-
 button{
   cursor:pointer; 
   display:inline-block;
-  float:left;
   width:250px;
   height:60px;
   margin-top:-10px;
@@ -132,6 +129,7 @@ button{
       }
    }
 }
+
 label {
   font-weight: bold; /* Rendere il testo in grassetto */
   color: #414141; /* Colore del testo */
@@ -152,21 +150,14 @@ label {
     z-index:5;
     -webkit-transition:.8s ease-in-out;
     transition:.8s ease-in-out;
-  }
-
-
+}
 
 .sig{
-
-
-
-
   color: #fff; /* Colore del testo bianco */
-
-   background:#ff5722;
-   z-index:5;
-   -webkit-transition:.8s ease-in-out;
-    transition:.8s ease-in-out;
+  background:#faecd9;
+  z-index:5;
+  -webkit-transition:.8s ease-in-out;
+  transition:.8s ease-in-out;
 }
 
 h3{
@@ -179,5 +170,12 @@ h3{
   -webkit-transition:.3s ease-in-out 1.2s;
   transition:.3s ease-in-out 1.2s;
 }
-
-
+.logo {
+  position: fixed; /* Posiziona l'immagine in modo fisso */
+  top: 50%; /* Posiziona l'elemento al 50% dell'altezza del contenitore */
+  left:800px; /* Sposta l'elemento 50px dalla sinistra del contenitore */
+  transform: translateY(-50%); /* Per centrare verticalmente l'elemento */
+  width: 500px; /* Imposta la larghezza del logo uguale alla larghezza del form */
+  height: 500px; /* Imposta l'altezza del logo uguale alla larghezza del form */
+  border-radius: 50%; /* Rende il logo circolare */
+}
