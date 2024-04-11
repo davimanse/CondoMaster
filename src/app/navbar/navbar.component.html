@@ -11,21 +11,21 @@
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a routerLink="/home" class="nav-link text-white d-flex align-items-center" aria-current="page">
+      <a (click)="gotoentry()" class="nav-link text-white d-flex align-items-center" aria-current="page">
         <svg class="bi me-2" width="16" height="16" fill="currentColor"></svg>
         <span class="material-symbols-outlined me-2">home</span> <!-- Aggiunto margine destro -->
         Home
       </a>
     </li>
     <li>
-      <a routerLink="/appartamenti" class="nav-link text-white d-flex align-items-center">
+      <a (click)="gotohome()" class="nav-link text-white d-flex align-items-center">
         <svg class="bi me-2" width="16" height="16" fill="currentColor"></svg>
         <span class="material-symbols-outlined me-2">apartment</span> <!-- Aggiunto margine destro -->
         Condomini
       </a>
     </li>
     <li>
-      <a routerLink="/spese" class="nav-link text-white d-flex align-items-center">
+      <a (click)="gotospese()" class="nav-link text-white d-flex align-items-center">
         <svg class="bi me-2" width="16" height="16" fill="currentColor"></svg>
         <span class="material-symbols-outlined me-2">payments</span> <!-- Aggiunto margine destro -->
         Spese

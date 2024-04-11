@@ -15,5 +15,16 @@ logo: any;
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-
+  gotoentry()
+  {
+    this.router.navigate(['/entry']);
+  }
+  gotohome()
+  {
+    this.router.navigate(['/home']);
+  }
+  gotospese()
+  {
+    this.router.navigate(['/spese']);
+  }
 }

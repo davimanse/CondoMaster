@@ -33,7 +33,8 @@ export class EntryComponent implements OnInit{
 
 
   route(){
-    this.router.navigate(['/condomini']);
+    this.router.navigate(['/home']);
+    console.log("ciao");
   }
  
 
