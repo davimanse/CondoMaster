@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit{
       const password = this.loginForm.get('password')?.value;
       const loginResult:boolean = await this.authService.login(username, password);
       if(loginResult)
-      { this.router.navigate(['/home']);}
+      { this.router.navigate(['/entry']);}
       else{
         const username = this.loginForm.get('username')?.value;
         const password = this.loginForm.get('password')?.value;

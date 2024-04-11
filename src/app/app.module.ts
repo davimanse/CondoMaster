@@ -7,12 +7,12 @@ import { MenuComponent } from "./menu/menu.component";
 import { HomeComponent } from "./home/home.component";
 import { MatSidenavContent } from '@angular/material/sidenav';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { EntryComponent } from './entry/entry.component';
 
 
 
 @NgModule({
-    declarations: [HomeComponent,NavbarComponent],
+    declarations: [HomeComponent, NavbarComponent, EntryComponent],
     providers: [],
     bootstrap: [],
     imports: [
