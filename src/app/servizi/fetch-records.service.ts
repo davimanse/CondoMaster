@@ -18,12 +18,6 @@ export class PocketBaseService {
     return records;
   }
    //funzione per prendere il nome dell admin
-   async getAdminName(id:string){
-    const pb = new PocketBase('http://127.0.0.1:8090');
-    
-    const records = await pb.collection('Admin').getOne(id);
-    return records;
-  }
 
   async addCondo(data: { Nome: string, Indirizzo: string, nAppartamenti: number, IDAdmin: string }) {
     const pb = new PocketBase('http://127.0.0.1:8090');
@@ -36,5 +30,14 @@ export class PocketBaseService {
     const pb = new PocketBase('http://127.0.0.1:8090');
     await pb.collection('Condominio').delete(id);
   }
+  async getNomeAdmin(id: string): Promise<string> {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+    const record = await pb.collection('Admin').getOne(id, {
+        expand: 'username',
+    });
+    const username = record['username'] as string;
+    return username;
+}
+
 
 }

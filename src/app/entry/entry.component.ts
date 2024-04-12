@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { PocketBaseService } from '../servizi/fetch-records.service';
 import {CondoModel } from '../models/condo-model';
+import { RecordModel } from 'PocketBase';
 
 @Component({
   selector: 'app-entry',
@@ -14,21 +15,22 @@ export class EntryComponent implements OnInit{
   
   private router: Router = inject(Router);
   private authService : AuthService = inject(AuthService);
+  private pocketBaseService: PocketBaseService =inject(PocketBaseService);
   adminId: string;
+  
   utente: any;
-  constructor(private pocketBaseService: PocketBaseService,) { this.adminId=this.authService.getAdminId()}
+  adminNome: Promise<string> | undefined;
+  
+  
+  constructor() { this.adminId=this.authService.getAdminId()}
 
 
   ngOnInit(): void {
     this.adminId = this.authService.getAdminId();
-    //voglio prendere il nome dell admin 
-    this.pocketBaseService.getAdminName(this.adminId).then((records) => {
-      this.utente = [records];
-      console.log(this.utente);
-    }
-    );
-  
-
+    console.log(this.adminId);
+    this.adminNome = this.pocketBaseService.getNomeAdmin(this.adminId);
+    console.log(this.adminNome);
+    console.log("ciao");
   }
 
 
