@@ -29,15 +29,20 @@ export class PocketBaseService {
   async deleteCondo(id:string){
     const pb = new PocketBase('http://127.0.0.1:8090');
     await pb.collection('Condominio').delete(id);
+    
   }
-  async getNomeAdmin(id: string): Promise<string> {
+
+  async getNomeAdmin(id: string){
     const pb = new PocketBase('http://127.0.0.1:8090');
     const record = await pb.collection('Admin').getOne(id, {
         expand: 'username',
     });
-    const username = record['username'] as string;
-    return username;
+    const records = record['username'];
+    return records;
+    
+
 }
+
 
 
 }
