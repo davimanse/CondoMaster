@@ -1,0 +1,15 @@
+html,
+body {
+  overflow-x: hidden; /* Nasconde la barra di scorrimento orizzontale */
+  height: 100%; /* Imposta l'altezza del corpo al 100% */
+}
+
+.row {
+  margin-right: 0; /* Rimuove il margine destro della riga per evitare overflow */
+}
+
+.fixed-bottom {
+  position: fixed; /* Posizione fissa rispetto al fondo */
+    bottom: 0; /* Posiziona l'elemento al fondo della pagina */
+
+}

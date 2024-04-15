@@ -8,11 +8,13 @@ import { HomeComponent } from "./home/home.component";
 import { MatSidenavContent } from '@angular/material/sidenav';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EntryComponent } from './entry/entry.component';
+import { SpeseComponent } from './spese/spese.component';
+
 
 
 
 @NgModule({
-    declarations: [HomeComponent, NavbarComponent, EntryComponent],
+    declarations: [HomeComponent, NavbarComponent, EntryComponent, SpeseComponent],
     providers: [],
     bootstrap: [],
     imports: [
