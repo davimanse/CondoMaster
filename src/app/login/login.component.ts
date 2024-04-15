@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit{
   //fields
   loginForm !: FormGroup ;
   alert = this.alertService.alert$;
+  registerForm!: FormGroup;
+  isLoginForm: boolean = true;
   //ritorna un oggetto che contiene tutti i controlli del form
 
   //metodi
@@ -63,9 +65,19 @@ export class LoginComponent implements OnInit{
   get f() { return this.loginForm.controls; }
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      'username': ['', Validators.required],
-      'password': ['', Validators.required]
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
     });
     this.alertService.clearAlert();
+  }
+  toggleForm() {
+    this.isLoginForm = !this.isLoginForm;
   }
 }

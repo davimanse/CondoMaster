@@ -1,26 +1,23 @@
-
 <div id="colors">
-
-
-    
     <div class="container">
-        
-        <h2><b>Login CondoMaster </b></h2>
-        <form [formGroup]="loginForm" (ngSubmit)="login()">
-       
-            <input type="text" class="email" formControlName="username" placeholder="USERNAME" required>
-            <br>
-           
-            <input type="password" class="pwd" formControlName="password" placeholder="PASSWORD" required>
-            <br>
+        <h2><b>Login CondoMaster</b></h2>
+        <ng-container *ngIf="!isLoginForm">
+            <input type="email" class="email" formControlName="email" placeholder="EMAIL" required><br>
+        </ng-container>
+        <form [formGroup]="isLoginForm ? loginForm : registerForm" (ngSubmit)="isLoginForm ? login() : register()">
+            <input type="text" class="email" formControlName="username" placeholder="USERNAME" required><br>
+            <input type="password" class="pwd" formControlName="password" placeholder="PASSWORD" required><br>
+            <ng-container *ngIf="!isLoginForm">
+                <input type="password" class="pwd" formControlName="confirmPassword" placeholder="CONFIRM PASSWORD" required><br>
+            </ng-container>
             <ng-container *ngIf="alert|async as alert">
                 <span [class]="alert.alertClass">{{alert.message}}</span>
             </ng-container>
-    
-            <input class="sig" type="submit" value="Login" [disabled]="loginForm.invalid">
-
+            <div style="display: flex; justify-content: space-between;">
+                <input class="sig" type="submit" value="{{ isLoginForm ? 'Login' : 'Registrati' }}" [disabled]="isLoginForm ? loginForm.invalid : registerForm.invalid">
+                <input class="sig" type="button" (click)="toggleForm()" value="{{ isLoginForm ? 'Registrati' : 'Login' }}">
+            </div>
         </form>
         <img src="../../assets/logo.jpg" class="logo">
     </div>
-    
-    </div>
+</div>

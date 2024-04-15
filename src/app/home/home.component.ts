@@ -110,5 +110,8 @@ export class HomeComponent implements OnInit {
       IDAdmin: '',
     };
   }
-  
+  redirectToAppartamenti(condominioId: string) {
+    this.pocketBaseService.setCondoId(condominioId);
+    this.router.navigate(['/appartamenti', condominioId]);
+  }
 }

@@ -23,23 +23,25 @@ svg{
   background-color:#faecd9;
 }
 
-.container{
-  position:relative;
-  top:225px;
-  margin-bottom:80px;
-  width:500px;
-  height:360px;
-  background:#fff;
-  border-radius:5px;
-  overflow:hidden;
-  z-index:1;
+.container {
+  position: relative;
+  top: 225px;
+  margin-bottom: 80px;
+  width: 500px;
+  height: 360px;
+  background: #fff;
+  border-radius: 5px;
+  overflow: auto; /* o overflow: scroll; */
+  z-index: 1;
   left: 190px;
 }
+
 
 h2{
   padding:40px;
   font-weight:lighter;
   color:#414141;
+  text-align: center;
 }
 
 input{
@@ -153,11 +155,13 @@ label {
 }
 
 .sig{
-  color: #fff; /* Colore del testo bianco */
+  color: black; /* Colore del testo bianco */
+  text-align: center; /* Allinea il testo al centro */
   background:#faecd9;
   z-index:5;
   -webkit-transition:.8s ease-in-out;
   transition:.8s ease-in-out;
+  width: 225px;
 }
 
 h3{

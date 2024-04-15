@@ -27,4 +27,8 @@ logo: any;
   {
     this.router.navigate(['/spese']);
   }
+  gotofeedback()
+  {
+    this.router.navigate(['/feedback']);
+  }
 }

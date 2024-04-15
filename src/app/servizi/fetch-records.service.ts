@@ -6,6 +6,9 @@ import { CondoListModel, CondoModel } from '../models/condo-model';
   providedIn: 'root',
 })
 export class PocketBaseService {
+  setCondoId(condominioId: string) {
+
+  }
 
   constructor() { }
 

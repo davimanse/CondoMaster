@@ -17,11 +17,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let condominio of condomini">
+      <tr *ngFor="let condominio of condomini ">
         <td>{{ condominio.Nome }}</td>
         <td>{{ condominio.Indirizzo }}</td>
         <td>{{ condominio.nAppartamenti }}</td>
-        <td><button class="btn btn-danger" (click)="deleteCondo(condominio.id)">Elimina Appartamento</button></td>
+        <td><button class="btn btn-danger" (click)="deleteCondo(condominio.id)">Elimina Condominio</button></td>
       </tr>
     </tbody>
   </table>
