@@ -8,7 +8,9 @@ import { Chart } from 'chart.js/auto';
 
 })
 export class SpeseComponent implements OnInit{
-  
+
+
+
     constructor() { }
   
     ngOnInit(): void {
@@ -109,5 +111,7 @@ export class SpeseComponent implements OnInit{
       data: data
     });
   }
+
+  
     
 }
