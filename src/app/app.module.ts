@@ -9,12 +9,14 @@ import { MatSidenavContent } from '@angular/material/sidenav';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EntryComponent } from './entry/entry.component';
 import { SpeseComponent } from './spese/spese.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { IndexUtenteComponent } from './index-utente/index-utente.component';
 
 
 
 
 @NgModule({
-    declarations: [HomeComponent, NavbarComponent, EntryComponent, SpeseComponent],
+    declarations: [HomeComponent, NavbarComponent, EntryComponent, SpeseComponent, FeedbackComponent, IndexUtenteComponent],
     providers: [],
     bootstrap: [],
     imports: [
