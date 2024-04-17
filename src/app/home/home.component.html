@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let condominio of condomini ">
+      <tr *ngFor="let condominio of condomini " (click)="navigateToCondominio(condominio.id)">
         <td>{{ condominio.Nome }}</td>
         <td>{{ condominio.Indirizzo }}</td>
         <td>{{ condominio.nAppartamenti }}</td>

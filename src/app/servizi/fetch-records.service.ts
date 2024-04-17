@@ -42,8 +42,14 @@ export class PocketBaseService {
     });
     const records = record['username'];
     return records;
-    
+}
 
+async getApparrtamenti(id: string){
+  const pb = new PocketBase('http://127.0.0.1:8090');
+  
+  const record = await pb.collection('Appartamento').getOne('RECORD_ID', {
+      expand: 'relField1,relField2.subRelField',
+  });
 }
 
 

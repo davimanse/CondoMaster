@@ -58,6 +58,9 @@ export class HomeComponent implements OnInit {
     } else {
       this.LoadCondo();
     }
+  } 
+   navigateToCondominio(condominioId: string) {
+    this.router.navigate(['/condominio', condominioId]);
   }
 
   async LoadCondo(): Promise<void> {
