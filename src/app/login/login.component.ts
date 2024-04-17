@@ -44,7 +44,8 @@ export class LoginComponent implements OnInit{
         const loginResult:boolean = await this.authService.loginUsers(username, password);
         if(loginResult)
         { 
-         this.router.navigate(['/IndexUtente']);
+
+         this.router.navigate(['/Indexutente']);
          console.log("login utente")
         }
       }

@@ -10,6 +10,7 @@ export class AuthService {
  
   private pb: PocketBase; // Dichiarare pb come proprietà della classe
   private adminId!: string;
+  private userId!: string;
 
   constructor() { 
     this.pb = new PocketBase('http://127.0.0.1:8090'); // Inizializzare pb nel costruttore
@@ -19,7 +20,9 @@ export class AuthService {
     try {
       const authData = await this.pb.collection('utente').authWithPassword(username, password);
       console.log("Accesso effettuato come utente");
+      this.userId = authData?.record?.id;
       console.log(this.pb.authStore.isValid);
+      console.log(this.userId);
       console.log(this.pb.authStore.token);
     } catch (error) {
       console.log("Errore nell'accesso come utente:", error);
@@ -50,6 +53,9 @@ export class AuthService {
       
   getAdminId(): string {
     return this.adminId;
+  }
+  returnUsersId(): string{
+    return this.userId;
   }
   
   isLoggedIn(): boolean {
