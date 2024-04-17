@@ -46,6 +46,28 @@ export class AuthService {
     console.log(this.pb.authStore.token);
     return true;
   }
+  //registrazione utente
+  async register(username: string, email: string, password: string, confirmPassword: string) {
+    try {
+      const userData = {
+        "username": username,
+        "email": email,
+        "password": password,
+        "confirmPassword": confirmPassword,
+        };
+
+      // Effettua la registrazione dell'utente
+      const response = await this.pb.collection('Utente').create(userData);
+      console.log("Utente registrato con successo:", response);
+      
+      // (opzionale) Invia una richiesta di verifica dell'email
+      await this.pb.collection('Utente').requestVerification(email);
+      
+    } catch (error) {
+      console.log("Errore nella registrazione dell'utente:", error);
+      throw error; // Rilancia l'errore per gestirlo nel componente di login
+    }
+  }
 
   async logout() {
     this.pb.authStore.clear();

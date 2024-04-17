@@ -60,10 +60,38 @@ export class LoginComponent implements OnInit{
 
 
   
-  register() {
+  async register() {
+    try {
+      this.alertService.setAlert({ alertClass: 'pending', message: 'Registering...' });
+      const email = this.registerForm.get('email')?.value;
+      const username = this.registerForm.get('username')?.value;
+      const password = this.registerForm.get('password')?.value;
+      const confirmPassword = this.registerForm.get('confirmPassword')?.value;
+      
+      if (password !== confirmPassword) {
+        this.alertService.setAlert({ alertClass: 'error', message: 'Passwords do not match' });
+        return;
+      }
+
+      console.log("Registering user:", username, email, password, confirmPassword);
+      
+      // Chiamata per registrare l'utente
+      await this.authService.register(username, email, password, confirmPassword);
+
+
+      // Reindirizza l'utente alla pagina di ingresso o a un'altra pagina appropriata
+      this.router.navigate(['/login']);
+      
+    } catch (error) {
+      console.error("Error during registration:", error);
+      this.alertService.setAlert({ alertClass: 'error', message: 'Registration failed' });
+    }
   }
 
+
   get f() { return this.loginForm.controls; }
+
+  
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
