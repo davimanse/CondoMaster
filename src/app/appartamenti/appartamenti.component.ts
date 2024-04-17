@@ -16,5 +16,8 @@ export class AppartamentiComponent {
   private router: Router = new Router;
   private pocketBaseService: PocketBaseService = new PocketBaseService;
   constructor(){};
+  ngOnInit():void {
+    this.pocketBaseService.getAppartamenti("id");
+  }
 
 }

@@ -15,3 +15,13 @@ export interface CondoModel {
     nAppartamenti:  number;
     IDAdmin:        string;
 }
+
+export interface AppartModel{
+    id: string,
+    Piano: number 
+    metriQuadri: number,
+    IDCondominio: string,
+    Millesimi: number,
+    IDUtente: string,
+
+}

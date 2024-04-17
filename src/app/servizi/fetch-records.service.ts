@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import PocketBase from 'PocketBase';
-import { CondoListModel, CondoModel } from '../models/condo-model';
+import { AppartModel, CondoListModel, CondoModel } from '../models/condo-model';
 
 @Injectable({
   providedIn: 'root',
@@ -44,12 +44,12 @@ export class PocketBaseService {
     return records;
 }
 
-async getApparrtamenti(id: string){
+async getAppartamenti(id: string){
   const pb = new PocketBase('http://127.0.0.1:8090');
-  
-  const record = await pb.collection('Appartamento').getOne('RECORD_ID', {
-      expand: 'relField1,relField2.subRelField',
+    const records =  await pb.collection('Appartamento').getList(1, 50, {
+      filter: "IDCondominio = '" + id + "'",
   });
+  console.log(records);
 }
 
 
