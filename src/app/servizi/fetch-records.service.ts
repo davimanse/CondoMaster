@@ -44,14 +44,22 @@ export class PocketBaseService {
     return records;
 }
 
-async getAppartamenti(id: string){
+async getAppartamenti(id:string): Promise<AppartModel[]> {
   const pb = new PocketBase('http://127.0.0.1:8090');
-    const records =  await pb.collection('Appartamento').getList(1, 50, {
-      filter: "IDCondominio = '" + id + "'",
-  });
-  console.log(records);
+  const records = await pb.collection('Appartamento').getList(1, 50, {
+    filter: 'IDCondominio=='+id,
+  
+});
+  console.log("sopra")
+  return records;
 }
+async UpdateCondo(id:string, data: { Nome: string, Indirizzo: string, nAppartamenti: number, IDAdmin: string })
+{
 
+  const pb = new PocketBase('http://127.0.0.1:8090');
+  const record = await pb.collection('Condominio').update(id, data);
+
+}
 
 
 }

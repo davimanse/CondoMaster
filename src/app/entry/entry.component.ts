@@ -16,7 +16,7 @@ export class EntryComponent implements OnInit, OnChanges{
   private router: Router = inject(Router);
   private authService : AuthService = inject(AuthService);
   private pocketBaseService: PocketBaseService =inject(PocketBaseService);
-  adminId: string;
+  adminId: any;
   
   adminNome: string | undefined;
   

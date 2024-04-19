@@ -1,1 +1,23 @@
 <p>appartamenti works!</p>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Piano Appartamento</th>
+        <th>Metri Quadri</th>
+        <th>Millesimi</th>
+        <th>Abitante</th>
+      
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appartamento of appartamenti">
+        <td>{{ appartamento.Piano }}</td>
+        <td>{{ appartamento.metriQuadri }}</td>
+        <td>{{ appartamento.Millesimi }}</td>
+        <td>{{ appartamento.IDUtente }}</td>
+    
+        
+      </tr>
+    </tbody>
+  </table>
+  

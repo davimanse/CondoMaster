@@ -13,23 +13,29 @@
         <th>Indirizzo</th>
         <th>Numero Appartamenti</th>
         <th></th>
-        <th></th>
+      
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let condominio of condomini " (click)="navigateToCondominio(condominio.id)">
+      <tr *ngFor="let condominio of condomini">
         <td>{{ condominio.Nome }}</td>
         <td>{{ condominio.Indirizzo }}</td>
         <td>{{ condominio.nAppartamenti }}</td>
-        <td><button class="btn btn-danger" (click)="deleteCondo(condominio.id)">Elimina Condominio</button></td>
+        <td>
+          
+        <button class="btn btn-primary" (click)="navigateToCondominio(condominio.id)">Dettagli </button>
+           <button class="btn btn-warning" (click)="UpdateCondominio(condominio.id)">Modifica Condominio</button>
+           <button class="btn btn-danger" (click)="deleteCondo(condominio.id)">Elimina Condominio</button>
+
+        </td>
       </tr>
     </tbody>
   </table>
   
-  <button class="btn btn-primary" id="Agg" (click)="openModal()">Aggiungi Condominio</button>
+  <button class="btn btn-secondary" id="Agg" (click)="openModal()">Aggiungi Condominio</button>
   
   <!-- Modal per l'aggiunta di un condominio -->
-  <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showModal}" style="display: block;" *ngIf="showModal">
+  <div class=" modal-content modal-content-padding" tabindex="-1" role="dialog" [ngClass]="{'show': showModal}" style="display: block;" *ngIf="showModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -61,6 +67,38 @@
     </div>
   </div>
 
+  <!-- Modal per l'aggiornamento di un condominio -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showUpdateModal}" style="display: block;" *ngIf="showUpdateModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modifica Condominio</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeUpdateModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="nuovoCondominio.Nome">
+        </div>
+        <div class="form-group">
+          <label for="indirizzo">Indirizzo:</label>
+          <input type="text" class="form-control" id="indirizzo" name="indirizzo" [(ngModel)]="nuovoCondominio.Indirizzo">
+        </div>
+        <div class="form-group">
+          <label for="nAppartamenti">Numero Appartamenti:</label>
+          <input type="number" class="form-control" id="nAppartamenti" name="nAppartamenti" [(ngModel)]="nuovoCondominio.nAppartamenti">
+        </div>
+      </form>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="closeUpdateModal()">Salva </button>
+        <button type="button" class="btn btn-secondary" (click)="closeUpdateModal()">Annulla</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

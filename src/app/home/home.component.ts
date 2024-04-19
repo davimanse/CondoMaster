@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   private authService: AuthService;
   private router: Router;
   private pocketBaseService: PocketBaseService;
-  adminId: string;
   condomini: CondoModel[] = [];
   nuovoCondominio = {
     Nome: '',
@@ -30,64 +29,79 @@ export class HomeComponent implements OnInit {
     IDAdmin: '',
   };
   showModal = false;
+  showUpdateModal= false;
+  adminId!: any;
 
   constructor(authService: AuthService, router: Router, pocketBaseService: PocketBaseService) {
     this.authService = authService;
     this.router = router;
     this.pocketBaseService = pocketBaseService;
-    this.adminId = this.authService.getAdminId();
+
   }
 
-  ngOnInit(): void {
-    // Recupera i dati dal localStorage al caricamento della pagina
-    this.adminId = this.authService.getAdminId();
-    
-    const savedData = localStorage.getItem('condomini');
-    if (savedData) {
-      this.condomini = JSON.parse(savedData);
-    } else {
+   async ngOnInit() {
+   
+    const adminIdPromise = this.authService.getAdminId();
+    this.adminId = await adminIdPromise; // Attendiamo che la Promise si risolva
+    console.log("Admin ID:", this.adminId);
       this.LoadCondo();
-    }
+
+      /*
+      const a= this.authService.authstore();
+      console.log("store",a);
+  */
   }
   ngOnChange()
   {
-    this.LoadCondo();
-    const savedData = localStorage.getItem('condomini');
-    if (savedData) {
-      this.condomini = JSON.parse(savedData);
-    } else {
       this.LoadCondo();
-    }
+    
   } 
+  
    navigateToCondominio(condominioId: string) {
     this.router.navigate(['/condominio', condominioId]);
   }
-
+  
   async LoadCondo(): Promise<void> {
+
     this.condomini = await this.pocketBaseService.getCondomini();
+    console.log(this.condomini);
+    
     this.condomini = this.condomini.filter(
-      condo => condo.IDAdmin === this.adminId
+      condo => { 
+
+        console.log(condo.IDAdmin, this.adminId)
+        return condo.IDAdmin === this.adminId 
+      }
     );
-    // Salva i dati nel localStorage dopo averli ottenuti dal servizio
-    localStorage.setItem('condomini', JSON.stringify(this.condomini));
+    
+    console.log(this.condomini);
   }
 
   async deleteCondo(id: string): Promise<void> {
     this.nuovoCondominio.IDAdmin = this.adminId;
     this.pocketBaseService.deleteCondo(id);
     this.condomini = this.condomini.filter(condo => condo.id !== id);
-    // Salva i dati nel localStorage dopo l'eliminazione
-    localStorage.setItem('condomini', JSON.stringify(this.condomini));
+
   }
 
   async aggiungiCondominio(): Promise<void> {
+    this.openModal();
     this.nuovoCondominio.IDAdmin = this.adminId;
     console.log(this.nuovoCondominio);
     this.pocketBaseService.addCondo(this.nuovoCondominio);
     this.condomini = await this.pocketBaseService.getCondomini();
     this.closeModal();
-    // Salva i dati nel localStorage dopo l'aggiunta di un nuovo condominio
-    localStorage.setItem('condomini', JSON.stringify(this.condomini));
+    window.location.reload();
+
+  }
+  async UpdateCondominio(id:string): Promise<void>
+  {
+    this.openUpdateModal(id);
+    this.nuovoCondominio.IDAdmin = this.adminId;
+    console.log(this.nuovoCondominio);
+    await this.pocketBaseService.UpdateCondo(id, this.nuovoCondominio);
+    this.condomini = await this.pocketBaseService.getCondomini();
+    this.closeUpdateModal();
   }
 
   logout() {
@@ -101,6 +115,16 @@ export class HomeComponent implements OnInit {
 
   closeModal() {
     this.showModal = false;
+    console.log(this.nuovoCondominio);
+    this.resetForm();
+  }
+
+  openUpdateModal(id:string) {
+    this.showUpdateModal = true;
+  }
+  closeUpdateModal(){
+
+    this.showUpdateModal = false;
     console.log(this.nuovoCondominio);
     this.resetForm();
   }

@@ -19,6 +19,10 @@ table {
   tbody tr:nth-child(even) {
     background-color: #f2f2f2; /* sfondo grigio chiaro per le righe pari */
   }
+  .modal-content-padding {
+    padding: 20px; /* Puoi regolare il valore del padding in base alle tue esigenze */
+  }
+  
   
   /* Stile dei pulsanti */
   .btn {

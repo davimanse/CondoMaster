@@ -11,9 +11,11 @@ export class AuthService {
   private pb: PocketBase; // Dichiarare pb come proprietà della classe
   private adminId!: string;
   private userId!: string;
-
+  authData: any;
+  
   constructor() { 
     this.pb = new PocketBase('http://127.0.0.1:8090'); // Inizializzare pb nel costruttore
+    
   } 
 
   async loginUsers(username: string, password: string) {
@@ -34,7 +36,7 @@ export class AuthService {
     try {
       // Effettua l'autenticazione come amministratore
       const authData = await this.pb.collection('Admin').authWithPassword(username, password);
-      this.adminId = authData?.record?.id;
+      this.authData=authData;
       console.log("Accesso effettuato come amministratore");
     } catch (error) {
       // Se l'autenticazione come amministratore fallisce, prova come utente
@@ -73,14 +75,25 @@ export class AuthService {
     this.pb.authStore.clear();
   }      
       
-  getAdminId(): string {
-    return this.adminId;
-  }
+    async getAdminId(): Promise<string> {
+      this.authData = await this.pb.collection('Admin').authRefresh();
+      console.log(this.authData,"X"); 
+      this.adminId = this.authData.record.id;
+      console.log(this.adminId);
+      return this.adminId;
+    }
   returnUsersId(): string{
     return this.userId;
   }
   
   isLoggedIn(): boolean {
+  console.log(this.pb.authStore);
     return this.pb.authStore.isValid;
+  
+  }
+
+  authstore(): any{
+    return this.pb.authStore;
   }
 }
+
