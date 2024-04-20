@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   private router: Router;
   private pocketBaseService: PocketBaseService;
   condomini: CondoModel[] = [];
+  
   nuovoCondominio = {
     Nome: '',
     Indirizzo: '',

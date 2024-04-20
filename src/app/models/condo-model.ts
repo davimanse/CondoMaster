@@ -17,11 +17,10 @@ export interface CondoModel {
 }
 
 export interface AppartModel{
-    id: string,
-    Piano: number 
-    metriQuadri: number,
-    IDCondominio: string,
-    Millesimi: number,
-    IDUtente: string,
-
+    id: string;
+    Piano: number;
+    metriQuadri: number;
+    IDCondominio: string;
+    Millesimi: number;
+    IDUtente: string;
 }

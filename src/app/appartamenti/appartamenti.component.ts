@@ -1,44 +1,29 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PocketBaseService } from '../servizi/fetch-records.service';
 import { AppartModel } from '../models/condo-model';
-import {CondoModel } from '../models/condo-model';
 
-
-import { BrowserModule } from '@angular/platform-browser'; // if _HomeComponent is in the root module
-import PocketBase from 'PocketBase';
-import { AppModule } from '../app.module';
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
 @Component({
   selector: 'app-appartamenti',
-
   templateUrl: './appartamenti.component.html',
-  styleUrl: './appartamenti.component.scss'
+  styleUrls: ['./appartamenti.component.scss']
 })
-export class AppartamentiComponent {
-
-  private authService: AuthService = new AuthService;
-  private router: Router = new Router;
-  private pocketBaseService: PocketBaseService = new PocketBaseService;
+export class AppartamentiComponent implements OnInit {
+  condominioId!: string;
   appartamenti: AppartModel[] = [];
-  constructor(authService: AuthService, router: Router, pocketBaseService: PocketBaseService) {
-    this.authService = authService;
-    this.router = router;
-    this.pocketBaseService = pocketBaseService;
 
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private pocketBaseService: PocketBaseService
+  ) {}
 
-  ngOnInit():void {
-    this.LoadApartament();
-
-  }
-  async LoadApartament(): Promise<void> {
-
-    this.appartamenti = await this.pocketBaseService.getAppartamenti(id);
-    console.log(this.appartamenti);
+  async ngOnInit(){
+    this.route.params.subscribe(params => {
+      this.condominioId = params['condominioId'];
+      console.log(this.condominioId, "ID");
+    });
+    this.appartamenti= await this.pocketBaseService.getAppartamenti(this.condominioId);
     console.log(this.appartamenti);
   }
-
 }

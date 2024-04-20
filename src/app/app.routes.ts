@@ -16,7 +16,7 @@ export const routes: Routes = [
     {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     {path: 'spese', component: SpeseComponent, canActivate: [AuthGuard]},
     {path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard]},
-    {path: 'condominio/:id', component: AppartamentiComponent, canActivate: [AuthGuard]}, 
+    {path: 'condominio/:condominioId', component: AppartamentiComponent, canActivate: [AuthGuard]}, 
     {path: 'Indexutente', component: IndexUtenteComponent},
 
     
