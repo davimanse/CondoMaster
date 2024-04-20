@@ -25,5 +25,6 @@ export class AppartamentiComponent implements OnInit {
     });
     this.appartamenti= await this.pocketBaseService.getAppartamenti(this.condominioId);
     console.log(this.appartamenti);
+    
   }
 }
