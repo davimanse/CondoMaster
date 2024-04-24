@@ -93,6 +93,10 @@ export class AuthService {
     return this.pb.authStore.isValid;
   
   }
+  async passwordReset(email:string){
+    const a=await this.pb.collection('Utente').requestPasswordReset(email);
+    console.log(a);
+  }
 
   authstore(): any{
     return this.pb.authStore;
