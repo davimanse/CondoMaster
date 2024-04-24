@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit{
   private authService : AuthService = inject(AuthService);
   private alertService : AlertService = inject(AlertService);
   private router: Router = inject(Router);
+ 
 
   //fields
   loginForm !: FormGroup ;
@@ -58,7 +59,12 @@ export class LoginComponent implements OnInit{
    
   }
 
-
+  expandRegisterContainer() {
+    const registerContainer = document.getElementById('registerContainer');
+    if (registerContainer) {
+      registerContainer.style.height = '450px'; // Modifica l'altezza del container
+    }
+  }
   
   async register() {
     try {

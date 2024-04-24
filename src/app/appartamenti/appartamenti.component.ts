@@ -12,6 +12,7 @@ export class AppartamentiComponent implements OnInit {
   condominioId!: string;
   appartamenti: AppartModel[] = [];
 
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -27,4 +28,11 @@ export class AppartamentiComponent implements OnInit {
     console.log(this.appartamenti);
     
   }
+/*
+   getnomeUtente(id: string){
+    const nome =  this.pocketBaseService.getNomeUtente(id);
+    console.log(nome);
+    return nome;
+  }
+  */
 }

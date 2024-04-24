@@ -43,6 +43,14 @@ export class PocketBaseService {
     const records = record['username'];
     return records;
 }
+async getNomeUtente(id: string) : Promise<string>{
+  const pb = new PocketBase('http://127.0.0.1:8090');
+  const record = await pb.collection('Utente').getOne(id, {
+      expand: 'username',
+  });
+  const records = record['username'];
+  return records;
+}
 
 async getAppartamenti(id: string): Promise<AppartModel[]> {
   const pb = new PocketBase('http://127.0.0.1:8090');

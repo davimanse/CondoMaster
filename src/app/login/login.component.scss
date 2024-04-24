@@ -25,15 +25,16 @@ svg{
 
 .container {
   position: relative;
-  top: 225px;
+  top: 150px;
   margin-bottom: 80px;
   width: 500px;
-  height: 360px;
+  min-height: 360px;
   background: #fff;
   border-radius: 5px;
-  overflow: auto; /* o overflow: scroll; */
+  overflow: hidden; /* o overflow: scroll; */
   z-index: 1;
   left: 190px;
+  transition: height 0.5s ease;
 }
 
 

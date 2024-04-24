@@ -12,12 +12,13 @@ import { SpeseComponent } from './spese/spese.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { IndexUtenteComponent } from './index-utente/index-utente.component';
 import { AppartamentiComponent } from './appartamenti/appartamenti.component';
+import { NavbarUtenteComponent } from "./navbar-utente/navbar-utente.component";
 
 
 
 
 @NgModule({
-    declarations: [HomeComponent, NavbarComponent, EntryComponent, SpeseComponent, FeedbackComponent, IndexUtenteComponent, AppartamentiComponent],
+    declarations: [HomeComponent, NavbarComponent, EntryComponent, SpeseComponent, FeedbackComponent, IndexUtenteComponent, AppartamentiComponent,NavbarUtenteComponent],
     providers: [],
     bootstrap: [],
     imports: [
@@ -28,6 +29,7 @@ import { AppartamentiComponent } from './appartamenti/appartamenti.component';
         FormsModule,
         MenuComponent,
         MatSidenavContent,
+        
     ]
 })
 export class AppModule { }

@@ -29,6 +29,6 @@ logo: any;
   }
   gotofeedback()
   {
-    this.router.navigate(['/feedback']);
+    this.router.navigate(['/Adminfeedback']);
   }
 }

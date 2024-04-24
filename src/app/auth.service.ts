@@ -54,10 +54,12 @@ export class AuthService {
       const userData = {
         "username": username,
         "email": email,
+        "emailVisibility": true,
         "password": password,
-        "confirmPassword": confirmPassword,
+        "passwordConfirm": confirmPassword,
         };
-
+    
+      console.log("Registering user:", userData);
       // Effettua la registrazione dell'utente
       const response = await this.pb.collection('Utente').create(userData);
       console.log("Utente registrato con successo:", response);

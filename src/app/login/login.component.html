@@ -1,5 +1,5 @@
 <div id="colors">
-    <div class="container">
+    <div class="container" id="registerContainer">
         <h2><b>Login CondoMaster</b></h2>
         <ng-container *ngIf="!isLoginForm">
             <form [formGroup]="registerForm" (ngSubmit)="register()">
@@ -11,7 +11,7 @@
                     <span [class]="alert.alertClass">{{alert.message}}</span>
                 </ng-container>
                 <div style="display: flex; justify-content: space-between;">
-                    <input class="sig" type="submit" value="Registrati" [disabled]="registerForm.invalid">
+                    <input class="sig" type="submit" value="Registrati" [disabled]="registerForm.invalid" (click)="expandRegisterContainer()">
                     <input class="sig" type="button" (click)="toggleForm()" value="Login">
                 </div>
             </form>
