@@ -1,0 +1,52 @@
+/* Per il layout generale */
+.row {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .col-2 {
+    background-color: #f8f9fa; /* Colore di sfondo per la barra di navigazione */
+    height: 100vh; /* Assicura che la barra di navigazione sia dell'altezza della pagina */
+    overflow-y: auto; /* Consente lo scorrimento se il contenuto supera l'altezza della finestra */
+  }
+  
+  .col-10 {
+    padding: 20px; /* Aggiunge un po' di spazio intorno al contenuto */
+  }
+  
+  /* Per la tabella dei feedback */
+  .table {
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Spazio tra le righe */
+  }
+  
+  .table-striped tbody tr {
+    background-color: #ffffff; /* Colore di sfondo delle righe */
+    transition: background-color 0.3s; /* Effetto di transizione per il hover */
+  }
+  
+  .table-striped tbody tr:hover {
+    background-color: #e9ecef; /* Colore al passaggio del mouse */
+  }
+  
+  /* Per le celle della tabella */
+  .table-striped td {
+    padding: 10px; /* Aggiunge spazio all'interno delle celle */
+    border-top: none; /* Rimuove le linee di confine tra le celle */
+  }
+  
+  /* Per la sezione senza feedback */
+  .no-feedback {
+    text-align: center; /* Centro il messaggio */
+    padding: 20px; /* Aggiunge spazio intorno al messaggio */
+    background-color: #f8f9fa; /* Colore di sfondo per un contrasto leggero */
+    border-radius: 10px; /* Aggiunge angoli arrotondati */
+    color: #6c757d; /* Colore del testo per un contrasto migliore */
+  }
+  
+  /* Per l'intestazione della pagina */
+  h2 {
+    margin-bottom: 20px; /* Spazio sotto l'intestazione */
+    padding-top: 2%; /* Aggiunge spazio intorno all'intestazione */
+  }
+  

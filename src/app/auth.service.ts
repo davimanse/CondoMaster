@@ -9,8 +9,8 @@ import { UserModel } from './models/user-model';
 export class AuthService {
  
   private pb: PocketBase; // Dichiarare pb come proprietà della classe
-  private adminId!: string;
-  private userId!: string;
+   adminId!: string;
+   utenteId!: string;
   authData: any;
   
   constructor() { 
@@ -22,9 +22,9 @@ export class AuthService {
     try {
       const authData = await this.pb.collection('utente').authWithPassword(username, password);
       console.log("Accesso effettuato come utente");
-      this.userId = authData?.record?.id;
+      this.utenteId = authData?.record?.id;
       console.log(this.pb.authStore.isValid);
-      console.log(this.userId);
+      console.log(this.utenteId);
       console.log(this.pb.authStore.token);
     } catch (error) {
       console.log("Errore nell'accesso come utente:", error);
@@ -84,9 +84,12 @@ export class AuthService {
       console.log(this.adminId);
       return this.adminId;
     }
-  returnUsersId(): string{
-    return this.userId;
-  }
+    async getUtentiId(): Promise <string>{
+    this.authData = await this.pb.collection('Utente').authRefresh();
+    console.log(this.authData,"X"); 
+    this.utenteId = this.authData.record.id;
+    console.log(this.adminId);
+    return this.utenteId;  }
   
   isLoggedIn(): boolean {
   console.log(this.pb.authStore);
