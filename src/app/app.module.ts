@@ -13,12 +13,13 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { IndexUtenteComponent } from './index-utente/index-utente.component';
 import { AppartamentiComponent } from './appartamenti/appartamenti.component';
 import { NavbarUtenteComponent } from "./navbar-utente/navbar-utente.component";
+import { FeedbackAdminComponent } from './feedback-admin/feedback-admin.component';
 
 
 
 
 @NgModule({
-    declarations: [HomeComponent, NavbarComponent, EntryComponent, SpeseComponent, FeedbackComponent, IndexUtenteComponent, AppartamentiComponent,NavbarUtenteComponent],
+    declarations: [HomeComponent, NavbarComponent, EntryComponent, SpeseComponent, FeedbackComponent, IndexUtenteComponent, AppartamentiComponent,NavbarUtenteComponent,FeedbackComponent, FeedbackAdminComponent],
     providers: [],
     bootstrap: [],
     imports: [

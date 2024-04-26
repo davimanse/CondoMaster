@@ -7,6 +7,7 @@ import { SpeseComponent } from './spese/spese.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { AppartamentiComponent } from './appartamenti/appartamenti.component';
 import { IndexUtenteComponent } from './index-utente/index-utente.component';
+import { FeedbackAdminComponent } from './feedback-admin/feedback-admin.component';
 
 
 export const routes: Routes = [
@@ -18,6 +19,7 @@ export const routes: Routes = [
     {path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard]},
     {path: 'condominio/:condominioId', component: AppartamentiComponent, canActivate: [AuthGuard]}, 
     {path: 'Indexutente', component: IndexUtenteComponent, canActivate: [AuthGuard]},
+    {path: 'feedbackAdmin', component: FeedbackAdminComponent, canActivate: [AuthGuard]},
 
     
 

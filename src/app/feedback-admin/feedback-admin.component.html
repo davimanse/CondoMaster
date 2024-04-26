@@ -1,0 +1,39 @@
+<div class="row" style="--bs-gutter-x: 0rem;">
+    <div class="col-2 p-0">
+      <app-navbar></app-navbar>
+    </div>
+    <div class="col-10 p-0">
+      <div class="container">
+        <h2>Feedback Amministratore</h2>
+      
+        <!-- Verifica se ci sono feedback disponibili -->
+        <div *ngIf="feedback && feedback.length > 0">
+          <!-- Tabella per mostrare i feedback -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Descrizione</th>
+                <th>Data</th>
+                <th>Stato</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Ciclo attraverso il feedback e mostro i dati nella tabella -->
+              <tr *ngFor="let item of feedback">
+                <td>{{ item.Descrizione }}</td>
+                <td>{{ item.Data }}</td>
+                <td>{{ item.Stato }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+        <!-- Messaggio di errore se non ci sono feedback -->
+        <div *ngIf="!feedback || feedback.length === 0">
+          <p>Nessun feedback disponibile.</p>
+        </div>
+      </div>
+      
+    </div>
+      
+  

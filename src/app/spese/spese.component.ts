@@ -4,23 +4,18 @@ import { Chart } from 'chart.js/auto';
 @Component({
   selector: 'app-spese',
   templateUrl: './spese.component.html',
-  styleUrl: './spese.component.scss'
-
+  styleUrls: ['./spese.component.scss'] // correggi qui la key styleUrls, perché era styleUrl
 })
-export class SpeseComponent implements OnInit{
+export class SpeseComponent implements OnInit {
+  constructor() { }
 
+  ngOnInit(): void {
+    this.createLineChart();
+    this.createBarChart();
+    this.createPieChart(); // Inizializza il grafico a torta
+  }
 
-
-    constructor() { }
-  
-    ngOnInit(): void {
-      this.createLineChart();
-      this.createBarChart();
-      this.createPieChart();
-    }
-
-   createLineChart() {
-    // Dati di esempio per il grafico a linee
+  createLineChart() {
     const data = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [{
@@ -35,7 +30,6 @@ export class SpeseComponent implements OnInit{
     const options = {
       scales: {
         y: {
-          type: 'linear', // Change the type to 'linear'
           beginAtZero: true
         }
       }
@@ -44,12 +38,11 @@ export class SpeseComponent implements OnInit{
     const lineChart = new Chart('lineChart', {
       type: 'line',
       data: data,
-  
+      options: options,
     });
   }
 
   createBarChart() {
-    // Dati di esempio per il grafico a barre
     const data = {
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
       datasets: [{
@@ -78,7 +71,7 @@ export class SpeseComponent implements OnInit{
     const options = {
       scales: {
         y: {
-          beginAtZero: true
+        beginAtZero: true
         }
       }
     };
@@ -86,17 +79,16 @@ export class SpeseComponent implements OnInit{
     const barChart = new Chart('barChart', {
       type: 'bar',
       data: data,
-      options: options
+      options: options,
     });
   }
 
   createPieChart() {
-    // Dati di esempio per il grafico a torta
     const data = {
       labels: ['Red', 'Blue', 'Yellow'],
       datasets: [{
-        label: 'My First Dataset',
-        data: [300, 50, 100],
+        label: 'Spese per Categoria',
+        data: [300, 50, 100], // dati di esempio
         backgroundColor: [
           'red',
           'blue',
@@ -107,11 +99,8 @@ export class SpeseComponent implements OnInit{
     };
 
     const pieChart = new Chart('pieChart', {
-      type: 'doughnut',
-      data: data
+      type: 'doughnut', // potrebbe essere 'pie' o 'doughnut'
+      data: data,
     });
   }
-
-  
-    
 }

@@ -15,25 +15,30 @@
           <div class="col-lg-6 offset-lg-3">
             <form>
               <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" formControlName="name">
+                <label for="name" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="name" formControlName="nomeUtente">
               </div>
+              
+              <!-- Modifica da input type="email" a type="date" -->
               <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" formControlName="email">
+                <label for="data" class="form-label">Data</label>
+                <input type="date" class="form-control" id="data" formControlName="data">
               </div>
+              
               <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" id="message" rows="6" formControlName="message"></textarea>
+                <label for="message" class="form-label">Problema da comunicare</label>
+                <textarea class="form-control" id="message" rows="6" formControlName="Descrizione"></textarea>
               </div>
+              
               <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()">Invia</button>
               </div>
             </form>
           </div>
         </div>
+                    
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  
-</div>
+
