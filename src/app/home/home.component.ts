@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   };
   showModal = false;
   showUpdateModal= false;
+  iddelcondominiodamodificare!:string;
   adminId!: any;
 
   constructor(authService: AuthService, router: Router, pocketBaseService: PocketBaseService) {
@@ -55,6 +56,7 @@ export class HomeComponent implements OnInit {
   ngOnChange()
   {
       this.LoadCondo();
+    
     
   } 
   
@@ -95,15 +97,7 @@ export class HomeComponent implements OnInit {
     window.location.reload();
 
   }
-  async UpdateCondominio(id:string): Promise<void>
-  {
-    this.openUpdateModal(id);
-    this.nuovoCondominio.IDAdmin = this.adminId;
-    console.log(this.nuovoCondominio);
-    await this.pocketBaseService.UpdateCondo(id, this.nuovoCondominio);
-    this.condomini = await this.pocketBaseService.getCondomini();
-    this.closeUpdateModal();
-  }
+
 
   logout() {
     this.authService.logout();
@@ -120,9 +114,7 @@ export class HomeComponent implements OnInit {
     this.resetForm();
   }
 
-  openUpdateModal(id:string) {
-    this.showUpdateModal = true;
-  }
+ 
   closeUpdateModal(){
 
     this.showUpdateModal = false;
@@ -142,4 +134,36 @@ export class HomeComponent implements OnInit {
     this.pocketBaseService.setCondoId(condominioId);
     this.router.navigate(['/appartamenti', condominioId]);
   }
+  openUpdateModal(id: string) {
+    this.showUpdateModal = true;
+    // Imposta l'ID del condominio da modificare
+    this.iddelcondominiodamodificare = id;
+  }
+  
+  async UpdateCondominio(): Promise<void> {
+    // Estrai l'ID dal condominio da modificare
+    const idCondominio = this.iddelcondominiodamodificare;
+  
+    // Prepara i dati del condominio aggiornati (se necessario)
+    // In questo caso, supponiamo di aggiornare solo uno dei campi (es. Nome)
+    const condominioDaModificare = {
+      Nome: this.nuovoCondominio.Nome,
+      Indirizzo: this.nuovoCondominio.Indirizzo,
+      nAppartamenti: this.nuovoCondominio.nAppartamenti,
+    };
+  
+    console.log("ID Condominio da modificare:", idCondominio);
+    console.log("Dati da modificare:", condominioDaModificare);
+  
+    // Chiamata al servizio per aggiornare il condominio
+    await this.pocketBaseService.UpdateCondo(idCondominio, condominioDaModificare);
+  
+    // Aggiornamento della lista dei condomini dopo la modifica
+    this.condomini = await this.pocketBaseService.getCondomini();
+    window.location.reload();
+
+    // Chiusura del modal di modifica dopo l'aggiornamento
+    this.closeUpdateModal();
+  }
+    
 }

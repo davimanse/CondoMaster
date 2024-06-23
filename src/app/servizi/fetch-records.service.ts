@@ -92,11 +92,12 @@ async getAppartamenti(id: string): Promise<AppartModel[]> {
   }
 }
 
-async UpdateCondo(id:string, data: { Nome: string, Indirizzo: string, nAppartamenti: number, IDAdmin: string })
+async UpdateCondo(id:string, data: { Nome: string, Indirizzo: string, nAppartamenti: number })
 {
 
   const pb = new PocketBase('http://127.0.0.1:8090');
   const record = await pb.collection('Condominio').update(id, data);
+  console.log(record);
 
 }
 

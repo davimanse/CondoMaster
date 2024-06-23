@@ -24,7 +24,7 @@
         <td>
           
         <button class="btn btn-primary" (click)="navigateToCondominio(condominio.id)">Dettagli </button>
-           <button class="btn btn-warning" (click)="UpdateCondominio(condominio.id)">Modifica Condominio</button>
+          <button class="btn btn-warning" (click)="openUpdateModal(condominio.id)">Modifica Condominio</button>
            <button class="btn btn-danger" (click)="deleteCondo(condominio.id)">Elimina Condominio</button>
 
         </td>
@@ -93,7 +93,7 @@
       </form>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="closeUpdateModal()">Salva </button>
+        <button type="button" class="btn btn-primary" (click)="UpdateCondominio()">Salva </button>
         <button type="button" class="btn btn-secondary" (click)="closeUpdateModal()">Annulla</button>
       </div>
     </div>
