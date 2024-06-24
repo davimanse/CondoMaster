@@ -52,6 +52,18 @@ export class PocketBaseService {
     return response;
   }
   
+  async addAppartamento(data: { Piano: number, metriQuadri: number, Millesimi: number,IDCondominio: string }) {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+    const response: CondoModel = await pb.collection('Appartamento').create(data);
+    return response;
+  }
+  
+  async deleteAppartamento(id:string){
+    const pb = new PocketBase('http://127.0.0.1:8090');
+    await pb.collection('Appartamento').delete(id);
+    
+  }
+
   
   async deleteCondo(id:string){
     const pb = new PocketBase('http://127.0.0.1:8090');

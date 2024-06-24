@@ -11,7 +11,13 @@ import { AppartModel } from '../models/condo-model';
 export class AppartamentiComponent implements OnInit {
   condominioId!: string;
   appartamenti: AppartModel[] = [];
-
+  nuovoAppartamento = {
+    Piano: 0,
+    metriQuadri: 0,
+    Millesimi: 0,
+    IDCondominio: ''
+  };
+  modalVisible = false;  // Variabile per gestire la visibilità del modal
 
   constructor(
     private route: ActivatedRoute,
@@ -19,20 +25,40 @@ export class AppartamentiComponent implements OnInit {
     private pocketBaseService: PocketBaseService
   ) {}
 
-  async ngOnInit(){
+  async ngOnInit() {
     this.route.params.subscribe(params => {
       this.condominioId = params['condominioId'];
-      console.log(this.condominioId, "ID");
     });
-    this.appartamenti= await this.pocketBaseService.getAppartamenti(this.condominioId);
-    console.log(this.appartamenti);
-    
+    await this.loadAppartamenti();
   }
-/*
-   getnomeUtente(id: string){
-    const nome =  this.pocketBaseService.getNomeUtente(id);
-    console.log(nome);
-    return nome;
+
+  async loadAppartamenti() {
+    this.appartamenti = await this.pocketBaseService.getAppartamenti(this.condominioId);
   }
-  */
+
+  openModal() {
+    this.modalVisible = true;  // Mostra il modal
+  }
+
+  closeModal() {
+    this.modalVisible = false;  // Nasconde il modal
+  }
+
+  async addAppartamento() {
+    this.nuovoAppartamento.IDCondominio = this.condominioId;
+    console.log("dati da aggiungere", this.nuovoAppartamento);
+    await this.pocketBaseService.addAppartamento(this.nuovoAppartamento);
+    await this.loadAppartamenti();
+    this.nuovoAppartamento = { Piano: 0, metriQuadri: 0, Millesimi: 0, IDCondominio: '' };
+    this.closeModal();  // Chiudi il modal
+  }
+
+  async deleteAppartamento(id: string | undefined) {
+    if (id) {
+      await this.pocketBaseService.deleteAppartamento(id);
+      await this.loadAppartamenti();
+    } else {
+      console.error("ID non valido per la cancellazione");
+    }
+  }
 }

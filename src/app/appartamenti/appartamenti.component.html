@@ -3,31 +3,63 @@
     <app-navbar></app-navbar>
   </div>
   <div class="col-10 p-0">
-    
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Piano Appartamento</th>
-      <th>Metri Quadri</th>
-      <th>Millesimi</th>
-      <th>Abitante</th>
-    
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let appartamento of appartamenti">
-      <td>{{ appartamento.Piano }}</td>
-      <td>{{ appartamento.metriQuadri }}</td>
-      <td>{{ appartamento.Millesimi }}</td>
-      <td>{{ appartamento.IDUtente }}</td>
-  
-      
-    </tr>
-  </tbody>
-</table>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Piano Appartamento</th>
+          <th>Metri Quadri</th>
+          <th>Millesimi</th>
+          <th>Abitante</th>
+          <th>Azioni</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appartamento of appartamenti">
+          <td>{{ appartamento.Piano }}</td>
+          <td>{{ appartamento.metriQuadri }}</td>
+          <td>{{ appartamento.Millesimi }}</td>
+          <td>{{ appartamento.IDUtente }}</td>
+          <td>
+            <button (click)="deleteAppartamento(appartamento.id!)" class="btn btn-danger" [disabled]="!appartamento.id">Elimina</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
+    <!-- Bottone per aprire il modal -->
+    <button type="button" class="btn btn-primary" (click)="openModal()">Aggiungi Appartamento</button>
 
+    <!-- Modal Template -->
+    <div class="modal" [class.show]="modalVisible" [style.display]="modalVisible ? 'block' : 'none'">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Aggiungi Appartamento</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="addAppartamento()">
+              <div class="form-group">
+                <label for="piano">Piano</label>
+                <input id="piano" [(ngModel)]="nuovoAppartamento.Piano" name="Piano" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="metriQuadri">Metri Quadri</label>
+                <input id="metriQuadri" [(ngModel)]="nuovoAppartamento.metriQuadri" name="metriQuadri" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="millesimi">Millesimi</label>
+                <input id="millesimi" [(ngModel)]="nuovoAppartamento.Millesimi" name="Millesimi" class="form-control">
+              </div>
 
+              <button type="submit" class="btn btn-success">Aggiungi</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backdrop -->
+    <div class="modal-backdrop" [class.show]="modalVisible" [style.display]="modalVisible ? 'block' : 'none'"></div>
   </div>
 </div>
-
