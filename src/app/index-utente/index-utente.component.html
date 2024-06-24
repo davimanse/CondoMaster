@@ -26,11 +26,11 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let spesa of spese">
-                      <td>{{ spesa.data }}</td>
-                      <td>{{ spesa.descrizione }}</td>
-                      <td>{{ spesa.importo | currency }}</td>
-                      <td>{{ spesa.saldato ? 'Pagato' : 'Da pagare' }}</td>
-                      <td>{{ spesa.tipo }}</td>
+                      <td>{{ spesa.Data }}</td>
+                      <td>{{ spesa.Descrizione }}</td>
+                      <td>{{ spesa.Importo | currency }}</td>
+                      <td>{{ spesa.Saldato ? 'Pagato' : 'Da pagare' }}</td>
+                      <td>{{ spesa.Tipo }}</td>
                       
                     </tr>
                   </tbody>

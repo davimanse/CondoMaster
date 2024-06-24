@@ -1,7 +1,7 @@
 export interface Spesa {
-    descrizione: string;
-    data: string;
-    saldato: boolean;
-    tipo: string;
-    importo: number;
+    Descrizione: string;
+    Data: string;
+    Saldato: boolean;
+    Tipo: string;
+    Importo: number;
 }
