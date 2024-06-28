@@ -5,6 +5,7 @@
       "ng": "ng",
       "start": "ng serve",
       "build": "ng build",
+      "npm run build": "ng build",
       "watch": "ng build --watch --configuration development",
       "test": "ng test",
       "serve:ssr:CondoMaster": "node dist/condo-master/server/server.mjs"
