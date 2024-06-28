@@ -31,7 +31,7 @@ export class FeedbackComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     // Recupera gli ID utente e admin
-    // this.idUtente = await this.authService.getUtentiId(); // Cambia con il tuo metodo appropriato
+     this.idUtente = await this.authService.getUtentiId(); // Cambia con il tuo metodo appropriato
   //  this.idAdmin = await this.authService.getAdminId();   // Cambia con il tuo metodo appropriato
 
     console.log('IdUtente:', this.idUtente, 'IdAdmin:', this.idAdmin);

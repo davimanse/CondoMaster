@@ -22,7 +22,9 @@ export class FeedbackAdminComponent implements OnInit{
       console.log("Tutti i feedback:", allFeedback);
     
       // Filtra i feedback per includere solo quelli con IdAdmin uguale a adminId
-      this.feedback = allFeedback.filter((item: any) => item.IdAdmin === this.adminId);
+       //
+       
+       this.feedback = allFeedback;
     
       console.log("Feedback filtrato:", this.feedback);
     }
