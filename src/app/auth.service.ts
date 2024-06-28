@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import PocketBase from 'PocketBase';
 import { BehaviorSubject } from 'rxjs';
 import { UserModel } from './models/user-model';
-
+const url = 'https://lips-them.pockethost.io/'
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +14,7 @@ export class AuthService {
   authData: any;
   
   constructor() { 
-    this.pb = new PocketBase('http://127.0.0.1:8090'); // Inizializzare pb nel costruttore
+    this.pb = new PocketBase(url); // Inizializzare pb nel costruttore
     
   } 
 
