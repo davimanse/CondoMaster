@@ -13,7 +13,7 @@ export class UserGuard implements CanActivate {
     if (this.authService.isLoggedIn() && this.authService.authstore().model?.collectionName === 'Utente') {
       return true; // L'utente è loggato e appartiene alla collezione 'Utente'
     } else {
-      this.router.navigate(['/access-denied']); // Reindirizza all'accesso negato
+      this.router.navigate(['/login']);
       console.log('Accesso negato');
       return false;
     }

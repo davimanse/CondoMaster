@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate {
     if (this.authService.isLoggedIn() && this.authService.authstore().model?.collectionName === 'Admin') {
       return true; // L'utente è loggato e appartiene alla collezione 'Admin'
     } else {
-      this.router.navigate(['/access-denied']); // Reindirizza all'accesso negato
+      this.router.navigate(['/login']);
       console.log('Accesso negato');
       return false; // Reindirizza alla pagina di login se non è loggato o non è un amministratore
     }

@@ -31,8 +31,7 @@ export class LoginComponent implements OnInit {
 
   // Metodi
   async login() {
-    try {
-      this.alertService.setAlert({ alertClass: 'pending', message: 'Logging in...' });
+   
       const username = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
       const loginResult: boolean = await this.authService.login(username, password);
@@ -47,10 +46,11 @@ export class LoginComponent implements OnInit {
           console.log("Login utente");
         }
       }
-    } catch (e) {
-      console.error(e);
+      // Messaggio di errore per credenziali non valide
       this.alertService.setAlert({ alertClass: 'error', message: 'Invalid Credentials' });
-    }
+
+
+  
   }
 
   expandRegisterContainer() {
