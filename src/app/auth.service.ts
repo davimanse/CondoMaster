@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import PocketBase from 'PocketBase';
+import PocketBase from 'pocketbase';
 import { BehaviorSubject } from 'rxjs';
 import { UserModel } from './models/user-model';
 const url = 'https://lips-them.pockethost.io/'

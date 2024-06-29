@@ -4,7 +4,7 @@ import {CondoModel } from '../models/condo-model';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser'; // if _HomeComponent is in the root module
-import PocketBase from 'PocketBase';
+
 import { AppModule } from '../app.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';

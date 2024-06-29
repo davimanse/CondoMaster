@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { PocketBaseService } from '../servizi/fetch-records.service';
 import {CondoModel } from '../models/condo-model';
-import { RecordModel } from 'PocketBase';
+
 
 @Component({
   selector: 'app-entry',

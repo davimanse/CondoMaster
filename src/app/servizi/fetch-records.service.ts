@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import PocketBase from 'PocketBase';
+import PocketBase from 'pocketbase';
 import { AppartModel, CondoListModel, CondoModel } from '../models/condo-model';
 import { Spesa } from '../models/spesa-model';
 
