@@ -12,6 +12,11 @@
         </div>
         <div class="row">
           <div class="col-lg-6 offset-lg-3">
+            <!-- Messaggio di conferma -->
+            <div *ngIf="submissionSuccess" class="alert alert-success" role="alert">
+              Il tuo feedback è stato inviato con successo!
+            </div>
+
             <!-- Collega il FormGroup -->
             <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
               <div class="mb-3">

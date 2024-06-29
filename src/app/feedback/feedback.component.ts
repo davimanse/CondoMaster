@@ -13,6 +13,7 @@ export class FeedbackComponent implements OnInit {
   feedbackForm: FormGroup;  // Definisci il FormGroup
   idUtente!: string;
   idAdmin!: string;
+  submissionSuccess: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -49,9 +50,13 @@ export class FeedbackComponent implements OnInit {
       console.log('Dati del form:', feedbackData);
       
       // Invia il feedback al servizio PocketBase
-      this.pocketBaseService.addFeedback(feedbackData);
-
-      // Eventualmente, reindirizza l'utente o mostra un messaggio di successo
+      this.pocketBaseService.addFeedback(feedbackData).then(() => {
+        // Imposta submissionSuccess su true per mostrare il messaggio di successo
+        this.submissionSuccess = true;
+      }).catch((error) => {
+        console.error('Errore durante l\'invio del feedback:', error);
+        this.submissionSuccess = false; // Puoi gestire errori separatamente se necessario
+      });
     } else {
       console.log('Il modulo non è valido');
     }
